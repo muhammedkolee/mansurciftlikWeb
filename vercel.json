@@ -1,14 +1,25 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/admin",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
-          "value": "deneme.mansurciftlik.com"
+          "value": "yonetim.mansurciftlik.com"
         }
-      ]
+      ],
+      "destination": "/admin/:path*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "yonetim.mansurciftlik.com"
+        }
+      ],
+      "destination": "/admin"
     }
   ]
 }
