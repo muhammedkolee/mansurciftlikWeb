@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export function proxy(req) {
+export function middleware(req) {
   const url = req.nextUrl.clone();
   const host = req.headers.get("host");
 
