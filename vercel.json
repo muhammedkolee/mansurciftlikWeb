@@ -6,7 +6,7 @@
       "has": [
         {
           "type": "host",
-          "value": "yonetim.mansurciftlik.com"
+          "value": "deneme.mansurciftlik.com"
         }
       ],
       "destination": "/admin/:path*"
@@ -16,7 +16,7 @@
       "has": [
         {
           "type": "host",
-          "value": "yonetim.mansurciftlik.com"
+          "value": "deneme.mansurciftlik.com"
         }
       ],
       "destination": "/admin"
