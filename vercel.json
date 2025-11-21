@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/admin",
+      "has": [
+        {
+          "type": "host",
+          "value": "deneme.mansurciftlik.com"
+        }
+      ]
+    }
+  ]
+}
