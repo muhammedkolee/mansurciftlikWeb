@@ -12,9 +12,9 @@ export async function GET() {
       );
     }
 
-    // Profil bilgilerini al
+    // 1. Profil Bilgileri İçin URL Değişimi:
     const profileResponse = await fetch(
-      `https://graph.instagram.com/${USER_ID}?fields=id,username,account_type,media_count,followers_count,follows_count,biography,profile_picture_url&access_token=${ACCESS_TOKEN}`
+      `https://graph.facebook.com/v18.0/${USER_ID}?fields=id,username,name,profile_picture_url,biography,followers_count&access_token=${ACCESS_TOKEN}`
     );
     const profileData = await profileResponse.json();
 
@@ -26,8 +26,9 @@ export async function GET() {
     }
 
     // Son 9 gönderiyi al
+// 2. Medya (Gönderiler) İçin URL Değişimi:
     const mediaResponse = await fetch(
-      `https://graph.instagram.com/${USER_ID}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,like_count,comments_count&limit=9&access_token=${ACCESS_TOKEN}`
+      `https://graph.facebook.com/v18.0/${USER_ID}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=9&access_token=${ACCESS_TOKEN}`
     );
     const mediaData = await mediaResponse.json();
 
