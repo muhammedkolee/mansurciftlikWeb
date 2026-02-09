@@ -26,9 +26,8 @@ export async function GET() {
     }
 
     // Son 9 gönderiyi al
-// 2. Medya (Gönderiler) İçin URL Değişimi:
     const mediaResponse = await fetch(
-      `https://graph.facebook.com/v18.0/${USER_ID}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=9&access_token=${ACCESS_TOKEN}`
+      `https://graph.facebook.com/v18.0/${USER_ID}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,like_count,comments_count&limit=9&access_token=${ACCESS_TOKEN}`
     );
     const mediaData = await mediaResponse.json();
 
