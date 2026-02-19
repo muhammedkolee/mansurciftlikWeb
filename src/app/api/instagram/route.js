@@ -14,7 +14,7 @@ export async function GET() {
 
     // 1. Profil Bilgileri İçin URL Değişimi:
     const profileResponse = await fetch(
-      `https://graph.facebook.com/v18.0/${USER_ID}?fields=id,username,name,profile_picture_url,biography,followers_count&access_token=${ACCESS_TOKEN}`
+      `https://graph.facebook.com/v18.0/${USER_ID}?fields=id,username,name,profile_picture_url,biography,followers_count,follows_count&access_token=${ACCESS_TOKEN}`
     );
     const profileData = await profileResponse.json();
 

@@ -15,6 +15,15 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Mansur Çiftlik",
   description: "Mansur Simental Damızlık Düve ve Angus Yetiştiriciliği İşletmesi Resmi Web Sayfası",
+  icons: {
+    icon: [
+      { url: '/icon.png' },
+      new URL('/icon.png', 'https://mansurciftlik.com')
+    ],
+    apple: [
+      { url: '/icon.png' }
+    ]
+  }
 };
 
 export default function RootLayout({ children }) {
