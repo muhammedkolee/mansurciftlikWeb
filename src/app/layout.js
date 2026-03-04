@@ -19,11 +19,11 @@ export const metadata = {
   description: "Mansur Simental Damızlık Düve ve Angus Yetiştiriciliği İşletmesi Resmi Web Sayfası",
   icons: {
     icon: [
-      { url: '/icon.png' },
-      new URL('/icon.png', 'https://mansurciftlik.com')
+      { url: '/favicon.png' },
+      new URL('/favicon.png', 'https://mansurciftlik.com')
     ],
     apple: [
-      { url: '/icon.png' }
+      { url: '/favicon.png' }
     ]
   }
 };

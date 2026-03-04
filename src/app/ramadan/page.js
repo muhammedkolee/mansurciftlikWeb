@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Coordinates, CalculationMethod, PrayerTimes } from "adhan";
 
-// Ramazan 2025: 19 Şubat – 19 Mart (30 gün), Bayram: 20 Mart
-const RAMADAN_START = new Date(2025, 1, 19); 
+// Ramazan 2026: 19 Şubat – 19 Mart (29 gün), Bayram: 20 Mart
+const RAMADAN_START = new Date(2026, 1, 19);
 const RAMADAN_DAYS = 30;
 
 const TURKEY_CITIES = [
@@ -147,7 +147,7 @@ const RamadanCalendar = ({ coords, today }) => {
     const coordinates = new Coordinates(coords.lat, coords.lng);
     const params = CalculationMethod.Turkey();
     return Array.from({ length: RAMADAN_DAYS }, (_, i) => {
-      const date = new Date();
+      const date = new Date(RAMADAN_START);
       date.setDate(RAMADAN_START.getDate() + i);
       const pt = new PrayerTimes(coordinates, date, params);
       return {
@@ -170,7 +170,7 @@ const RamadanCalendar = ({ coords, today }) => {
       <div className="flex items-center  gap-3 px-6 py-5 border-b border-white/[0.07]">
         <span className="text-xl">🗓️</span>
         <div>
-          <h2 className="text-amber-300 font-semibold tracking-widest text-sm uppercase" style={{ fontFamily: "'Cinzel', serif" }}>Ramazan Takvimi 2025</h2>
+          <h2 className="text-amber-300 font-semibold tracking-widest text-sm uppercase" style={{ fontFamily: "'Cinzel', serif" }}>Ramazan Takvimi 2026</h2>
           <p className="text-white/30 text-xs italic mt-0.5" style={{ fontFamily: "'Crimson Text', serif" }}>19 Şubat – 19 Mart · Bayram 20 Mart</p>
         </div>
       </div>
@@ -288,7 +288,7 @@ export default function RamadanStatus() {
       {/* Content Section */}
       <div className="w-full max-w-7xl px-4 py-8 relative z-10 flex-1">
         <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
-          
+
           {/* ANA KART */}
           <div className="w-full lg:w-[450px] main-card rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-2xl overflow-visible">
             <div className="px-8 pt-8 pb-6 text-center border-b border-white/[0.07]">
