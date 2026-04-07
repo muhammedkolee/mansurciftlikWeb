@@ -1,13 +1,313 @@
+/* ── IMPORTS (must be first and only @import "tailwindcss") ── */
 @import "tailwindcss";
 
+/* Google Fonts is loaded via <link> in layout.js - NOT here */
+
+/* ── HOVER UTILITIES (CSS-only — no JS event handlers needed) ── */
+.hover-card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12) !important;
+}
+
+.hover-nav-link:hover {
+  background: var(--brand-brown-pale) !important;
+  color: var(--brand-brown-dark) !important;
+}
+
+.hover-footer-link:hover {
+  color: white !important;
+}
+
+.hover-social-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+.hover-mgmt-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(27, 79, 138, 0.4) !important;
+}
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
 :root {
-  /* Burayı temiz tutuyoruz, varsayılan arka plan yok */
-  --foreground: #ffffff;
+  /* Brand palette */
+  --brand-brown-dark: #4A2512;
+  --brand-brown: #6B3F1F;
+  --brand-brown-mid: #8B5A2B;
+  --brand-brown-light: #C4855A;
+  --brand-brown-pale: #F5EDE4;
+
+  --brand-green-deep: #2D361E;
+  --brand-green-moss: #4b9320;
+
+  --brand-blue-dark: #0F2E5A;
+  --brand-blue: #1B4F8A;
+  --brand-blue-mid: #2563B0;
+  --brand-blue-light: #3B82D8;
+  --brand-blue-pale: #EBF3FF;
+
+  --brand-white: #FAFAF7;
+  --brand-cream: #FDF8F3;
+  --brand-gray: #6B7280;
+  --brand-gray-light: #F3F4F6;
+
+  --background: var(--brand-white);
+  --foreground: #1A1A1A;
+
+  /* ── Semantic tokens (light mode) ── */
+  --bg-page: #FAFAF7;
+  --bg-alt: #FDF8F3;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #F9FAFB;
+  --text-primary: #1F1510;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --border-color: rgba(0, 0, 0, 0.07);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* ── DARK MODE ──────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --background: #0D1117;
+  --foreground: #F0EBE3;
+
+  /* Background layers */
+  --bg-page: #0D1117;
+  --bg-alt: #111827;
+  --bg-surface: #1C2433;
+  --bg-surface-alt: #141C28;
+
+  /* Text */
+  --text-primary: #F0EBE3;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Borders & shadows */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.55);
+
+  /* Brand pale colors — darker tints in dark mode */
+  --brand-brown-pale: rgba(107, 63, 31, 0.22);
+  --brand-blue-pale: rgba(27, 79, 138, 0.22);
+  --brand-cream: #111827;
+  --brand-white: #0D1117;
+  --brand-gray-light: #1C2433;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* ── RESET & BASE ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Smooth theme transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-  color: var(--foreground);
-  margin: 0;
-  padding: 0;
-  /* Arka planı burada tanımlama, her sayfa kendi rengini belirlesin */
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Apply transitions to common elements for smooth theme switch */
+a,
+button,
+[class*="card"],
+section,
+header,
+footer,
+nav {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-gray-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-brown-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-brown);
+}
+
+/* ── ANIMATIONS ────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── GALLERY ───────────────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1280px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  aspect-ratio: 4/5;
+  display: flex;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ── MANAGEMENT SIDEBAR ────────────────────────────────────── */
+.mgmt-sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--brand-brown-dark) 0%, var(--brand-brown) 100%);
+  flex-shrink: 0;
+}
+
+.mgmt-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mgmt-nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.mgmt-nav-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ── DATA TABLE ────────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+
+.data-table thead {
+  background: linear-gradient(135deg, var(--brand-brown) 0%, var(--brand-brown-mid) 100%);
+  color: white;
+}
+
+.data-table th {
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--brand-brown-pale);
+  transition: background-color 0.15s ease;
 }

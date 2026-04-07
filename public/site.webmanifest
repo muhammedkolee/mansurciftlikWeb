@@ -1,0 +1,16 @@
+{
+  "name": "Mansur Çiftlik",
+  "short_name": "Mansur Çiftlik",
+  "description": "Simental Damızlık Düve ve Angus Yetiştiriciliği",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF7",
+  "theme_color": "#6B3F1F",
+  "icons": [
+    {
+      "src": "/icon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

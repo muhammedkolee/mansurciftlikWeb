@@ -1,21 +1,31 @@
 export default function sitemap() {
   const baseUrl = 'https://mansurciftlik.com';
+  const lastModified = new Date();
 
-  // Gelecekte bir veritabanından (örneğin ilanlar veya bloglar) 
-  // veri çekmek istersen burayı genişletebilirsin.
-  
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/admin`,
-      lastModified: new Date(),
+      url: `${baseUrl}/products`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/about-us`,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
-    }
+    },
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
   ];
 }

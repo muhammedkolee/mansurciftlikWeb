@@ -3,8 +3,8 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/', // Gizli tutmak istediğin bir klasör varsa
+      disallow: ['/management/', '/api/'],
     },
     sitemap: 'https://mansurciftlik.com/sitemap.xml',
-  }
+  };
 }
