@@ -128,6 +128,15 @@ export default function SiteHeader() {
 
         {/* Controls: Theme + Lang */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }} className="hidden-mobile">
+            {/* Records Button */}
+          <Link
+            href="https://records.mansurciftlik.com"
+            style={toggleBtnStyle}
+            title="Kayıtlar"
+          >
+            <Database size={14} />
+            Kayıtlar
+          </Link>
           {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
@@ -175,6 +184,24 @@ export default function SiteHeader() {
             padding: '16px 24px 24px',
           }}
         >
+          <Link
+            href="https://records.mansurciftlik.com"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              display: 'block',
+              padding: '12px 16px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontSize: '15px',
+              fontWeight: 600,
+              marginBottom: '8px',
+              background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(107,63,31,0.08)',
+              color: isDark ? 'var(--text-primary)' : 'var(--brand-brown)',
+            }}
+          >
+            <Database size={14} />
+            Kayıtlar
+          </Link>
           {navLinks.map((link) => (
             <Link
               key={link.href}
