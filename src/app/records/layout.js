@@ -1,7 +1,7 @@
 // src/app/records/layout.js
 
 export const metadata = {
-  title: 'Mansur Çiftlik | Kayıt Paneli',
+  title: 'Süt Kayıt Defteri',
   description: 'Süt Kayıt Defteri, Süt Kayıt, Dijital Süt Kayıt, Dijital Kayıt',
   icons: {
     icon: '../favicon.ico',
