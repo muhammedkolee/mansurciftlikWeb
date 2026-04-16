@@ -4,8 +4,8 @@ export const metadata = {
   title: 'Mansur Çiftlik | Kayıt Paneli',
   description: 'Süt Kayıt Defteri, Süt Kayıt, Dijital Süt Kayıt, Dijital Kayıt',
   icons: {
-    icon: '../../../public/icon.ico',
-    apple: '../../../public/icon.ico',
+    icon: '../favicon.ico',
+    apple: '../favicon.ico',
   },
 };
 
