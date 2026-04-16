@@ -1,7 +1,9 @@
 // src/app/records/layout.js
 
 export const metadata = {
-  title: 'Süt Kayıt Defteri',
+  title: {
+    absolute: 'Süt Kayıt Defteri'
+  },
   description: 'Süt Kayıt Defteri, Süt Kayıt, Dijital Süt Kayıt, Dijital Kayıt',
   icons: {
     icon: '../favicon.ico',
