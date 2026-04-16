@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
+import { Menu, X, Moon, Sun, Globe, Database } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { translations, t } from '@/lib/translations';
 
