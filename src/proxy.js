@@ -4,14 +4,16 @@ export function proxy(req) {
   const url = req.nextUrl;
   const hostname = req.headers.get("host");
 
-  // Subdomain kontrolü
+  // records subdomain
   if (hostname && hostname.startsWith("records.")) {
-    // URL'in başına bizim yeni klasör ismini ekliyoruz
     return NextResponse.rewrite(new URL(`/records${url.pathname}`, req.url));
   }
 
-  // Eğer subdomain değilse, Next.js otomatik olarak (main) grubundaki page.js'i bulacaktır.
-  // Ekstra bir rewrite'a gerek kalmaz, çakışma bittiği için sistem rahatlar.
+  // management subdomain
+  if (hostname && hostname.startsWith("management.")) {
+    return NextResponse.rewrite(new URL(`/management${url.pathname}`, req.url));
+  }
+
   return NextResponse.next();
 }
 
