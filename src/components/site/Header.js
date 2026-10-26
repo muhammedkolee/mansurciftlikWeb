@@ -3,9 +3,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Globe, Database } from 'lucide-react';
+import { Menu, X, Moon, Sun, Globe, Sprout } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { translations, t } from '@/lib/translations';
+
+const AGIS_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://agis.localhost:3000'
+    : 'https://agis.mansurciftlik.com';
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -129,13 +134,14 @@ export default function SiteHeader() {
         {/* Controls: Theme + Lang */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }} className="hidden-mobile">
             {/* Records Button */}
+          {/* AGIS Field Tracking Button */}
           <Link
-            href="https://records.mansurciftlik.com"
+            href={AGIS_URL}
             style={toggleBtnStyle}
-            title="Kayıtlar"
+            title={lang === 'tr' ? 'Tarla Takip Sistemi' : 'Field Tracking System'}
           >
-            <Database size={14} />
-            Kayıtlar
+            <Sprout size={14} />
+            {lang === 'tr' ? 'Tarla Takip Sistemi' : 'Field Tracking System'}
           </Link>
           {/* Language Toggle */}
           <button
@@ -185,7 +191,7 @@ export default function SiteHeader() {
           }}
         >
           <Link
-            href="https://records.mansurciftlik.com"
+            href={AGIS_URL}
             onClick={() => setMenuOpen(false)}
             style={{
               display: 'block',
@@ -199,8 +205,8 @@ export default function SiteHeader() {
               color: isDark ? 'var(--text-primary)' : 'var(--brand-brown)',
             }}
           >
-            <Database size={14} />
-            Kayıtlar
+          <Sprout size={14} />
+          {lang === 'tr' ? 'Tarla Takip Sistemi' : 'Field Tracking System'}
           </Link>
           {navLinks.map((link) => (
             <Link
