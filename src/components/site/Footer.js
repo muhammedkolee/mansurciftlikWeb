@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Instagram, Facebook, Mail, ExternalLink } from 'lucide-react';
+// import { MapPin, Phone, Instagram, Facebook, Mail, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { FaFacebookF as Facebook, FaInstagram as Instagram } from 'react-icons/fa6';
 import { useApp } from '@/contexts/AppContext';
 import { translations, t } from '@/lib/translations';
 
